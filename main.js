@@ -58,7 +58,7 @@ const setText=(e)=>{
         `    <span id="cityDate">${date}</span>`+
         `</div>`+
         `<div class="cityInfos">`+
-        `    <ul>`+
+        `    <ul>`+dada
         `        <li>`+
         `            <div class="img">`+
         `                <img src="cloud.png">`+
