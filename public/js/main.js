@@ -58,7 +58,6 @@ const setText=(e)=>{
 
     let compo = document.createElement("div")
     compo.innerHTML =
-        `<div class="cityContainer">`+
         `<div class="cityTitle">`+
         `    <span id="cityName">${city}</span>`+
         `    <span id="cityDate">${date}</span>`+
@@ -93,11 +92,13 @@ const setText=(e)=>{
         `</div>`+
         `<div class="cityCross cross">`+
         `    <img src="public/img/cross.png" alt="">`+
-        `</div>`+
         `</div>`
 
+    compo.classList.add("cityContainer")
     compo.classList.add("dragger")
     compo.style = "position: absolute"
+    compo.style.zIndex = zMax
+    compo.style.setProperty("place-items", "initial", "important")
 
     let crossElm = compo.querySelector(".cross")
     crossElm.addEventListener("click", (e)=>{
