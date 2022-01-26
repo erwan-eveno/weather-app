@@ -122,6 +122,7 @@ const setText=(e)=>{
 }
 
 cityBtn.addEventListener("click", (e)=>{
+    if(!cityValue.value) return
     fetch(`https://www.prevision-meteo.ch/services/json/${cityValue.value}`)
         .then(e=>e.json())
         .then(e=>{
