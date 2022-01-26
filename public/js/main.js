@@ -141,6 +141,11 @@ cityBtn.addEventListener("click", (e)=>{
 /* Drag event */
 const el = [...document.querySelectorAll('.dragger')]
 
+el.map(x => {
+    x.addEventListener('mousedown', e => dragStart(e, x));
+})
+
+
 function dragStart(e, x) {
     window.addEventListener('mousemove', drag);
     window.addEventListener('mouseup', dragEnd);
@@ -153,8 +158,13 @@ function dragStart(e, x) {
         let currentY = initialY - e.clientY;
 
         const rect =  x.getBoundingClientRect();
-        x.style.left = rect.left - currentX + "px";
-        x.style.top = rect.top - currentY + "px";
+        let leftStyle = rect.left - currentX
+        if(leftStyle <= 0) leftStyle = 0
+        x.style.left = leftStyle + "px";
+
+        let topStyle = rect.top - currentY
+        if(topStyle <= 0) topStyle = 0
+        x.style.top = topStyle + "px";
 
         initialX = e.clientX;
         initialY = e.clientY;
@@ -165,7 +175,3 @@ function dragStart(e, x) {
         window.removeEventListener('mouseup', dragEnd);
     }
 }
-
-el.map(x => {
-    x.addEventListener('mousedown', e => dragStart(e, x));
-})
